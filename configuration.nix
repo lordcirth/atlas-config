@@ -43,6 +43,10 @@ in {
   # Set your time zone.
   time.timeZone = "America/Eastern";
 
+  nix.nixPath =
+    options.nix.nixPath.default ++
+    [ "nixpkgs-overlays=/etc/nixos/overlays/" ]
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
