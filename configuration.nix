@@ -33,13 +33,10 @@ in {
     options.nix.nixPath.default ++
     [ "nixpkgs-overlays=/etc/nixos/overlays/" ];
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     file htop git mosh mkpasswd tmux wget vim
   ];
 
-  # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
   # Open ports in the firewall.
