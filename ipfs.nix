@@ -9,6 +9,6 @@ in
 {
     environment.systemPackages = [ master.ipfs master.ipfs-migrator];
     services.ipfs = {
-      enable          = true;
+      enable  = true;
     };
 }
