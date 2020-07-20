@@ -3,8 +3,7 @@
   at-spi2-core, cups, nss, ... }:
 
 let
-  zipfile = /nix/store/1jvm0siryg45p8vjdzs7vgzxls50jx31-foundryvtt-0.6.5.zip;
-  #zipfile = /home/lordcirth/foundryvtt-0.6.5.zip;
+  zipfile = /nix/store/bk2c7x2n3q33f3vv2vmfy268h0i0plzp-foundryvtt-nodejs-0.6.5.zip;
 in
   stdenv.mkDerivation rec {
     pname = "foundry-vtt";
