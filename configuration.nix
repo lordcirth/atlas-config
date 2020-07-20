@@ -30,12 +30,12 @@ in {
   # Set your time zone.
   time.timeZone = "America/Eastern";
 
-  nix.nixPath =
-    options.nix.nixPath.default ++
-    [ "nixpkgs-overlays=/etc/nixos/overlays/" ];
+#  nix.nixPath =
+#    options.nix.nixPath.default ++
+#    [ "nixpkgs-overlays=/etc/nixos/overlays/" ];
 
   environment.systemPackages = with pkgs; [
-    dtrx file (import ./foundry-vtt.nix {inherit pkgs} ) htop git mosh mkpasswd nmap tmux wget vim
+    dtrx file (import ./foundry-vtt.nix) htop git mosh mkpasswd nmap tmux wget vim
   ];
 
   services.openssh.enable = true;
