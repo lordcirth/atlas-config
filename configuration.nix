@@ -10,6 +10,7 @@ in {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./ipfs.nix
     ];
 
   # Use the GRUB 2 boot loader.
@@ -34,7 +35,7 @@ in {
     [ "nixpkgs-overlays=/etc/nixos/overlays/" ];
 
   environment.systemPackages = with pkgs; [
-    file htop git mosh mkpasswd tmux wget vim
+    dtrx file htop git mosh mkpasswd nmap tmux wget vim
   ];
 
   services.openssh.enable = true;
