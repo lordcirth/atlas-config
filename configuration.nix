@@ -35,7 +35,8 @@ in {
 #    [ "nixpkgs-overlays=/etc/nixos/overlays/" ];
 
   environment.systemPackages = with pkgs; [
-    dtrx file (import ./foundry-vtt.nix) htop git mosh mkpasswd nmap tmux wget vim
+    dtrx file htop git mosh mkpasswd nmap tmux wget vim neovim
+    # (import ./foundry-vtt.nix)
   ];
 
   services.openssh.enable = true;
