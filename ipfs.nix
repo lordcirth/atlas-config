@@ -1,13 +1,6 @@
 { config, lib, pkgs, ... }:
-let master = import (
-  fetchGit {
-    name = "nixos-master";
-    url = "https://github.com/NixOS/nixpkgs.git";
-  }
-) {};
-in
 {
-    environment.systemPackages = [ master.ipfs master.ipfs-migrator];
+    environment.systemPackages = [ pkgs.ipfs-migrator pkgs.ipfs-cluster ];
     services.ipfs = {
       enable  = true;
     };
