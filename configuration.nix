@@ -11,6 +11,7 @@ in {
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./ipfs.nix
+      ./transmission.nix
     ];
 
   # Use the GRUB 2 boot loader.
