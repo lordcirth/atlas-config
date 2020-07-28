@@ -36,11 +36,12 @@ in {
 #    [ "nixpkgs-overlays=/etc/nixos/overlays/" ];
 
   environment.systemPackages = with pkgs; [
-    dtrx file htop git mosh mkpasswd nmap tmux wget vim neovim
+    dtrx file htop home-manager git mosh mkpasswd ncdu nmap tmux wget vim neovim
     # (import ./foundry-vtt.nix)
   ];
 
   services.openssh.enable = true;
+  services.i2p.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
