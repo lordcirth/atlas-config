@@ -37,7 +37,7 @@ in {
 
   environment.systemPackages = with pkgs; [
     dtrx file htop home-manager git mosh mkpasswd ncdu nmap tmux wget vim neovim
-    # (import ./foundry-vtt.nix)
+    (callPackage ./foundry-vtt.nix {})
   ];
 
   services.openssh.enable = true;
