@@ -1,9 +1,14 @@
-{ stdenv, autoPatchelfHook, unzip, libX11, libXcomposite, glib, libXcursor, libXdamage, libXext, libXi, libXrender,
+{ stdenv, requireFile, autoPatchelfHook, unzip, libX11, libXcomposite, glib, libXcursor, libXdamage, libXext, libXi, libXrender,
   libXtst, libxcb, nspr, dbus, gdk-pixbuf, gtk3, pango, atk, cairo, expat, libXrandr, libXScrnSaver, alsaLib,
   at-spi2-core, cups, nss, ... }:
 
 let
-  zipfile = /nix/store/bk2c7x2n3q33f3vv2vmfy268h0i0plzp-foundryvtt-nodejs-0.6.5.zip;
+  zipfile = requireFile {
+    name = "foundry-vtt-nodejs-0.6.5.zip";
+    sha256 = "a78d07ca9b72ae74acf2d91d55edce8f4b857839b0b1b16e28c223c70eaaa362";
+    url = "";
+  };
+
 in
   stdenv.mkDerivation rec {
     pname = "foundry-vtt";
