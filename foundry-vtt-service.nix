@@ -19,8 +19,12 @@ in {
 	config = mkIf foundrycfg.enable {
 	  systemd.services.foundry-vtt = {
 			enable = true;
-			user = nobody;
-			script = "${pkgs.nodejs}/bin/node ${pkgs.foundry-vtt}/resources/app/main.js --dataPath=/var/lib/foundry-vtt";
+			wantedBy = [ "multi-user.target" ];
+			serviceConfig = {
+				DynamicUser = true;
+				StateDirectory = "foundry-vtt";
+			};
+			script = "${pkgs.nodejs}/bin/node ${foundry-vtt}/resources/app/main.js --dataPath=/var/lib/foundry-vtt";
 		};
 	};
 }
