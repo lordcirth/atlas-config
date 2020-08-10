@@ -35,19 +35,19 @@ in {
   environment.systemPackages = with pkgs; [
     dtrx
     file
-    htop
-    home-manager
     git
-    mosh
+    home-manager
+    htop
     mkpasswd
+    mosh
     ncdu
+    neovim
     nixfmt
     nmap
     tmux
     unzip
-    wget
     vim
-    neovim
+    wget
     (callPackage ./foundry-vtt-headless.nix { })
   ];
   services.foundry-vtt.enable = true;

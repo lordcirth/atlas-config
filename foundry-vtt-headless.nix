@@ -16,33 +16,33 @@ in stdenv.mkDerivation rec {
   src = zipfile;
 
   buildInputs = [
+    alsaLib
+    at-spi2-core
+    atk
     autoPatchelfHook
-    unzip
-    libX11
-    libXcomposite
+    cairo
+    cups
+    dbus
+    expat
+    gdk-pixbuf
     glib
+    gtk3
+    libX11
+    libXScrnSaver
+    libXcomposite
     libXcursor
     libXdamage
     libXext
-    libXrender
     libXi
+    libXrandr
+    libXrender
     libXrender
     libXtst
     libxcb
     nspr
-    dbus
-    gdk-pixbuf
-    gtk3
-    pango
-    atk
-    cairo
-    expat
-    libXrandr
-    libXScrnSaver
-    alsaLib
-    at-spi2-core
-    cups
     nss
+    pango
+    unzip
   ];
 
   unpackPhase = ''
