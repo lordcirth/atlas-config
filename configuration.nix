@@ -10,8 +10,11 @@ in {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      <home-manager/nixos>
+      ./home-manager.nix
       ./ipfs.nix
       ./transmission.nix
+      ./foundry-vtt-service.nix
     ];
 
   # Use the GRUB 2 boot loader.
@@ -36,10 +39,10 @@ in {
 #    [ "nixpkgs-overlays=/etc/nixos/overlays/" ];
 
   environment.systemPackages = with pkgs; [
-    dtrx file htop home-manager git mosh mkpasswd ncdu nmap tmux wget vim neovim
-    (callPackage ./foundry-vtt.nix {})
+    dtrx file htop home-manager git mosh mkpasswd ncdu nmap tmux unzip wget vim neovim
+    (callPackage ./foundry-vtt-headless.nix {})
   ];
-
+	services.foundry-vtt.enable = true;
   services.openssh.enable = true;
   services.i2p.enable = true;
 
@@ -59,6 +62,8 @@ in {
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAXm7oXqY1G8dBDqP7TziaXFyVwHJ5ivgwweGAWzaSDT lordcirth@nezha"
     ];
   };
+
+  home-manager.useGlobalPkgs = true;
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
