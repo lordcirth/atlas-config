@@ -4,18 +4,16 @@
 
 { config, options, pkgs, ... }:
 
-let
-  password = (import ./passwords.nix).password;
+let password = (import ./passwords.nix).password;
 in {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      <home-manager/nixos>
-      ./home-manager.nix
-      ./ipfs.nix
-      ./transmission.nix
-      ./foundry-vtt-service.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    <home-manager/nixos>
+    ./home-manager.nix
+    ./ipfs.nix
+    ./transmission.nix
+    ./foundry-vtt-service.nix
+  ];
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
@@ -34,15 +32,25 @@ in {
   # Set your time zone.
   time.timeZone = "America/Eastern";
 
-#  nix.nixPath =
-#    options.nix.nixPath.default ++
-#    [ "nixpkgs-overlays=/etc/nixos/overlays/" ];
-
   environment.systemPackages = with pkgs; [
-    dtrx file htop home-manager git mosh mkpasswd ncdu nmap tmux unzip wget vim neovim
-    (callPackage ./foundry-vtt-headless.nix {})
+    dtrx
+    file
+    htop
+    home-manager
+    git
+    mosh
+    mkpasswd
+    ncdu
+    nixfmt
+    nmap
+    tmux
+    unzip
+    wget
+    vim
+    neovim
+    (callPackage ./foundry-vtt-headless.nix { })
   ];
-	services.foundry-vtt.enable = true;
+  services.foundry-vtt.enable = true;
   services.openssh.enable = true;
   services.i2p.enable = true;
 

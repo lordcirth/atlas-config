@@ -4,26 +4,23 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports =
-    [ <nixpkgs/nixos/modules/profiles/qemu-guest.nix>
-    ];
+  imports = [ <nixpkgs/nixos/modules/profiles/qemu-guest.nix> ];
 
-  boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "virtio_pci" "sr_mod" "virtio_blk" ];
+  boot.initrd.availableKernelModules =
+    [ "ata_piix" "uhci_hcd" "virtio_pci" "sr_mod" "virtio_blk" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/3ddcbfa6-ff6b-43fd-bc70-77609c5fad7d";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/3ddcbfa6-ff6b-43fd-bc70-77609c5fad7d";
+    fsType = "ext4";
+  };
 
-  swapDevices = [
-    {
-      device = "/swapfile";
-      size = 2048;
-    }
-  ];
+  swapDevices = [{
+    device = "/swapfile";
+    size = 2048;
+  }];
 
   nix.maxJobs = lib.mkDefault 1;
 }

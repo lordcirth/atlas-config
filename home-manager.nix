@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 
-let 
+let
   cfg = {
 
     programs.neovim = {
@@ -13,11 +13,8 @@ let
       '';
     };
   };
-in
-{
+in {
   imports = [ <home-manager/nixos> ];
-  home-manager.users = {
-    lordcirth = cfg;
-  };
+  home-manager.users = { lordcirth = cfg; };
 }
 

@@ -1,6 +1,7 @@
-{ stdenv, requireFile, autoPatchelfHook, unzip, libX11, libXcomposite, glib, libXcursor, libXdamage, libXext, libXi, libXrender,
-  libXtst, libxcb, nspr, dbus, gdk-pixbuf, gtk3, pango, atk, cairo, expat, libXrandr, libXScrnSaver, alsaLib,
-  at-spi2-core, cups, nss, ... }:
+{ stdenv, requireFile, autoPatchelfHook, unzip, libX11, libXcomposite, glib
+, libXcursor, libXdamage, libXext, libXi, libXrender, libXtst, libxcb, nspr
+, dbus, gdk-pixbuf, gtk3, pango, atk, cairo, expat, libXrandr, libXScrnSaver
+, alsaLib, at-spi2-core, cups, nss, ... }:
 
 let
   zipfile = requireFile {
@@ -9,21 +10,46 @@ let
     url = "";
   };
 
-in
-  stdenv.mkDerivation rec {
-    pname = "foundry-vtt";
-    version = "0.6.5";
-    src = zipfile;
+in stdenv.mkDerivation rec {
+  pname = "foundry-vtt";
+  version = "0.6.5";
+  src = zipfile;
 
-    buildInputs = [ autoPatchelfHook unzip libX11 libXcomposite glib libXcursor libXdamage libXext libXrender libXi
-      libXrender libXtst libxcb nspr dbus gdk-pixbuf gtk3 pango atk cairo expat libXrandr libXScrnSaver alsaLib
-      at-spi2-core cups nss ];
+  buildInputs = [
+    autoPatchelfHook
+    unzip
+    libX11
+    libXcomposite
+    glib
+    libXcursor
+    libXdamage
+    libXext
+    libXrender
+    libXi
+    libXrender
+    libXtst
+    libxcb
+    nspr
+    dbus
+    gdk-pixbuf
+    gtk3
+    pango
+    atk
+    cairo
+    expat
+    libXrandr
+    libXScrnSaver
+    alsaLib
+    at-spi2-core
+    cups
+    nss
+  ];
 
-    unpackPhase = ''
-      unzip ${src} -d src
-    '';
+  unpackPhase = ''
+    unzip ${src} -d src
+  '';
 
-    installPhase = ''
-      cp -r src $out
-    '';
-  }
+  installPhase = ''
+    cp -r src $out
+  '';
+}
