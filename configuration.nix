@@ -13,6 +13,7 @@ in {
     ./ipfs.nix
     ./transmission.nix
     ./foundry-vtt-service.nix
+    ./borg.nix
   ];
 
   # Use the GRUB 2 boot loader.
