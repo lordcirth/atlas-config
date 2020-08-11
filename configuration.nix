@@ -51,13 +51,15 @@ in {
     unzip
     vim
     wget
-    (callPackage ./foundry-vtt-headless.nix { })
+#    (callPackage ./foundry-vtt-headless.nix { })
   ];
 
   services.fail2ban.enable = true;
   services.fail2ban.bantime-increment.enable = true;
 
   services.foundry-vtt.enable = true;
+  systemd.services.foundry-vtt.serviceConfig = { MemoryLow = "256M"; };
+
   services.openssh.enable = true;
   services.i2p.enable = true;
 
