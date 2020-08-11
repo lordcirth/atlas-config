@@ -13,10 +13,15 @@ in {
         type = types.bool;
         default = false;
       };
+      port = mkOption {
+        type = types.int;
+        default = 30000;
+      };
     };
   };
 
   config = mkIf foundrycfg.enable {
+    networking.firewall.allowedTCPPorts = [ foundrycfg.port ];
     systemd.services.foundry-vtt = {
       enable = true;
       wantedBy = [ "multi-user.target" ];

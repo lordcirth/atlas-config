@@ -39,6 +39,7 @@ in {
     git
     home-manager
     htop
+    lsof
     mkpasswd
     mosh
     ncdu
@@ -51,6 +52,8 @@ in {
     wget
     (callPackage ./foundry-vtt-headless.nix { })
   ];
+
+  services.fail2ban.enable = true;
   services.foundry-vtt.enable = true;
   services.openssh.enable = true;
   services.i2p.enable = true;
@@ -58,8 +61,10 @@ in {
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  networking.firewall.enable = false;
+
+  # mosh
+  networking.firewall.allowedUDPPortRanges = [ { from = 60000; to = 60010; } ];
+  networking.firewall.enable = true;
 
   users.mutableUsers = false;
   users.users.root.hashedPassword = password;
