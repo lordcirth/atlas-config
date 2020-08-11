@@ -44,6 +44,7 @@ in {
     mosh
     ncdu
     neovim
+    nethogs
     nixfmt
     nmap
     tmux
@@ -54,6 +55,8 @@ in {
   ];
 
   services.fail2ban.enable = true;
+  services.fail2ban.bantime-increment.enable = true;
+
   services.foundry-vtt.enable = true;
   services.openssh.enable = true;
   services.i2p.enable = true;
