@@ -15,6 +15,9 @@ let
   };
 in {
   imports = [ <home-manager/nixos> ];
-  home-manager.users = { lordcirth = cfg; };
+  home-manager.users = {
+    lordcirth = cfg;
+    root = cfg;
+  };
 }
 

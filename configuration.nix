@@ -51,7 +51,6 @@ in {
     unzip
     vim
     wget
-#    (callPackage ./foundry-vtt-headless.nix { })
   ];
 
   services.fail2ban.enable = true;
@@ -68,7 +67,10 @@ in {
   # networking.firewall.allowedUDPPorts = [ ... ];
 
   # mosh
-  networking.firewall.allowedUDPPortRanges = [ { from = 60000; to = 60010; } ];
+  networking.firewall.allowedUDPPortRanges = [{
+    from = 60000;
+    to = 60010;
+  }];
   networking.firewall.enable = true;
 
   users.mutableUsers = false;

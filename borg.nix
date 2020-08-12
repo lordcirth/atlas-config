@@ -1,8 +1,8 @@
-{ config, options, pkgs, ... }:
-{
+{ config, options, pkgs, ... }: {
   services.openssh.knownHosts.borgbase = {
     hostNames = [ "fqf8lszq.repo.borgbase.com" "95.217.115.47" ];
-    publicKey = "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBOstKfBbwVOYQh3J7X4nzd6/VYgLfaucP9z5n4cpSzcZAOKGh6jH8e1mhQ4YupthlsdPKyFFZ3pKo4mTaRRuiJo=";
+    publicKey =
+      "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBOstKfBbwVOYQh3J7X4nzd6/VYgLfaucP9z5n4cpSzcZAOKGh6jH8e1mhQ4YupthlsdPKyFFZ3pKo4mTaRRuiJo=";
   };
 
   services.borgbackup.jobs = {
